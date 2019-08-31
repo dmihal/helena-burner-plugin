@@ -1,0 +1,13 @@
+.container {
+  position: relative;
+  min-height: 250px;
+  height: auto;
+  max-width: 600px;
+  padding: 6px;
+}
+
+.container * {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+  letter-spacing: 0.01em;
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import cn from 'classnames/bind';
 import Radio from '@material-ui/core/Radio';
 import { calcLMSRMarginalPrice } from '../../../../utils/pm';
-import style from './outcomeCategorical.scss';
+import style from './outcomeCategorical.module.css';
 import { COLOR_SCHEME_DEFAULT } from '../../../../utils/constants';
 
 const cx = cn.bind(style);

@@ -1,5 +1,5 @@
 import moment from 'moment';
-import sha1 from 'sha1';
+// import sha1 from 'sha1';
 import { OUTCOME_TYPES } from '../utils/constants';
 
 const OUTCOMES_SCALAR = ['Short', 'Long'];

@@ -140,7 +140,7 @@ export default class BetContainer extends React.Component {
   };
 
   render() {
-    const { onOverview, balance, loading, canInteract, market } = this.props;
+    const { onOverview, loading, canInteract, market } = this.props;
     const {
       amount,
       errorAmount,
@@ -158,7 +158,6 @@ export default class BetContainer extends React.Component {
       return (
         <Bet
           onOverview={onOverview}
-          balance={balance}
           amount={amount}
           onChangeAmount={this.onChangeAmount}
           errorAmount={errorAmount}

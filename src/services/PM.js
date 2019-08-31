@@ -2,11 +2,11 @@ import { Trade } from '../models/Trade';
 import { web3Service } from './index';
 import { hexWithoutPrefix } from '../utils/helpers';
 import { CategoricalMarket, ScalarMarket } from '../models/Market';
-import { getCollateralToken } from '../utils/config';
 
 class PMService {
-  constructor(httpService, web3) {
+  constructor(httpService, web3, token) {
     this.httpService = httpService;
+    this.token = token;
   }
 
   newMarket(market) {
@@ -22,11 +22,8 @@ class PMService {
       }
 
       const records = response.results.map(this.newMarket);
-      const collateralToken = getCollateralToken();
       const filteredRecords = records.filter(
-        (market) =>
-          `0x${market.collateralToken.toLowerCase()}` ===
-          collateralToken.toLowerCase()
+        (market) => this.token.toLowerCase() === collateralToken.toLowerCase()
       );
       return filteredRecords;
     });

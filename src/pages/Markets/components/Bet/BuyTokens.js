@@ -4,7 +4,7 @@ import GridItem from '../../../../ui-components/Grid/GridItem';
 import Input from '../../../../ui-components/Input';
 import cn from 'classnames/bind';
 import Button from '../../../../ui-components/Button';
-import style from './buyTokens.scss';
+import style from './buyTokens.module.css';
 import OutcomeCategorical from '../Overview/OutcomeCategorical';
 import OutcomeScalar from '../Overview/OutcomeScalar';
 

@@ -6,7 +6,7 @@ import ArrowRight from '@material-ui/icons/ArrowRight';
 import { OUTCOME_TYPES } from '../../../../utils/constants';
 import CategoricalGraph from './Categorical';
 import ScalarGraph from './Scalar';
-import style from './index.scss';
+import style from './index.module.css';
 
 const cx = cn.bind(style);
 

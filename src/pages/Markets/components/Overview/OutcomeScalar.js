@@ -7,7 +7,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import DecimalValue from '../../../../ui-components/DecimalValue';
-import style from './outcomeScalar.scss';
+import style from './outcomeScalar.module.css';
 import { calcLMSRMarginalPrice } from '../../../../utils/pm';
 
 const cx = cn.bind(style);

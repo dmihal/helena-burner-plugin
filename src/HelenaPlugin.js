@@ -1,11 +1,8 @@
 import React from 'react';
 import Decimal from 'decimal.js';
-import Bet from './pages/Bet';
-import Graph from './pages/Graph';
-import Market from './pages/Markets';
+import Markets from './pages/Markets';
 import { initHelenaConnection, initReadOnlyHelenaConnection } from './utils/pm';
 import { initServices, pmService } from './services';
-import { getTokenBalance } from './utils/token';
 
 Decimal.set({ toExpPos: 9999, precision: 50 });
 
@@ -19,9 +16,6 @@ export default class HelenaPlugin {
 
     this.markets = [];
     this.marketListeners = new Set();
-  }
-
-  constructor() {
     this._pluginContext = null;
   }
 
@@ -34,19 +28,14 @@ export default class HelenaPlugin {
   }
 
   async init() {
-    const { name, tradingdb, helenaUsers } = this;
+    const { name, tradingdb, helenaUsers, token } = this;
     const web3 = this._pluginContext.getWeb3('100');
     await Promise.all([
       initReadOnlyHelenaConnection(web3),
       initHelenaConnection(web3),
     ]);
-    await initServices({ web3, name, tradingdb, helenaUsers });
+    await initServices({ web3, name, tradingdb, helenaUsers, token });
     this.updateMarkets();
-  }
-
-  getBalance() {
-    const balance = await getTokenBalance();
-    return Decimal(balance).div(1e18).toDP(4).toString();
   }
 
   getMarkets() {
@@ -54,11 +43,11 @@ export default class HelenaPlugin {
   }
 
   addMarketListener(listener) {
-    this.changeListeners.add(listener);
+    this.marketListeners.add(listener);
   }
 
   removeMarketListener(listener) {
-    this.changeListeners.delete(listener);
+    this.marketListeners.delete(listener);
   }
 
   async updateMarkets() {

@@ -1,0 +1,35 @@
+.shareTable {
+  table-layout: fixed;
+}
+
+.shareTableRow {
+  vertical-align: middle;
+}
+
+.shareTableRow td {
+  vertical-align: middle !important;
+  border-top: 1px solid #ddd;
+}
+
+.shareTableRow td:first-of-type {
+  border-top: 0;
+}
+
+.shareOutcomeColor {
+  display: inline-block;
+  vertical-align: middle;
+
+  width: 20px;
+  height: 20px;
+
+  border-radius: 4px;
+}
+
+.tableHeading {
+  font-weight: 400;
+  border-bottom: none !important;
+}
+
+.tableHeading.first {
+  width: 36px;
+}

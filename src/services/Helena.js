@@ -1,5 +1,3 @@
-import { getConfig } from '../utils/config';
-
 class HelenaService {
   constructor(httpService, name) {
     this.httpService = httpService;
@@ -7,7 +5,6 @@ class HelenaService {
   }
 
   signUp(user) {
-    const instance = getConfig('instance');
     user.instance = this.name;
     return this.httpService.post('/users', user);
   }

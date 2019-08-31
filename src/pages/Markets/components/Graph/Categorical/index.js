@@ -2,18 +2,18 @@ import React from 'react';
 import cn from 'classnames/bind';
 import { schemeDark2 } from 'd3-scale-chromatic';
 import { scaleOrdinal } from 'd3';
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-  Legend
-} from 'recharts';
+// import {
+//   LineChart,
+//   Line,
+//   XAxis,
+//   YAxis,
+//   Tooltip,
+//   ResponsiveContainer,
+//   Legend
+// } from 'recharts';
 
 import { COLOR_SCHEME_DEFAULT } from '../../../../../utils/constants';
-import style from '../index.scss';
+import style from '../index.module.css';
 import CustomTooltip from '../CustomTooltip';
 
 import DateAxisTick from '../DateAxisTick';

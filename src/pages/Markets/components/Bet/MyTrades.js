@@ -11,7 +11,7 @@ import Decimal from 'decimal.js';
 import cn from 'classnames/bind';
 import TradeRow from './MyTradesTable/Row';
 import TableHeader from './MyTradesTable/Header';
-import style from './MyTradesTable/index.scss';
+import style from './MyTradesTable/index.module.css';
 
 const cx = cn.bind(style);
 

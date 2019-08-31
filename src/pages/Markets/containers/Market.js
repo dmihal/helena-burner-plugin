@@ -4,9 +4,8 @@ import Overview from './Overview';
 import Bet from './Bet';
 import Graph from './Graph';
 import { pmService } from '../../../services';
-import { getTokenBalance } from '../../../utils/token';
 
-import styles from './Market.scss';
+import styles from './Market.module.css';
 
 const cx = cn.bind(styles);
 const INTERVAL_MARKET_REFRESH = 15000;

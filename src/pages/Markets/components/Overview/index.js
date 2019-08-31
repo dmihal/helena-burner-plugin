@@ -11,8 +11,7 @@ import cn from 'classnames/bind';
 import OutcomeCategorical from './OutcomeCategorical';
 import OutcomeScalar from './OutcomeScalar';
 import { RESOLUTION_TIME } from '../../../../utils/constants';
-import { parseTokenValue } from '../../../../utils/token';
-import style from './index.scss';
+import style from './index.module.css';
 
 const cx = cn.bind(style);
 export default class Market extends React.Component {
@@ -27,8 +26,6 @@ export default class Market extends React.Component {
     } else if (market.resolved) {
       marketStatus = 'RESOLVED';
     }
-
-    const tradingVolume = parseTokenValue(market.volume);
 
     const resolutionDate = moment(market.resolution).format(
       RESOLUTION_TIME.ABSOLUTE_FORMAT
@@ -45,11 +42,6 @@ export default class Market extends React.Component {
     return (
       <div className={cx('overview-container')}>
         <div className={cx('read')}>
-          {/* {balance && (
-            <div className={cx('header')}>{`${parseTokenValue(
-              balance
-            )} xP+`}</div>
-          )} */}
           <div className={cx('title-header')}>
             <div className={cx('title')}>{market.title}</div>
             {/* <div className={cx('subtitle')}>{market.description}</div> */}
@@ -64,15 +56,6 @@ export default class Market extends React.Component {
             </div>
           )}
         </div>
-          {/* <div className={cx('details')}>
-            <div className={cx('resolution-date')}>
-              Closing at {resolutionDate}
-            </div>
-            <div className={cx('volume')}>
-              Volume: {tradingVolume} xP+
-            </div>
-            
-          </div> */}
           {marketStatus === 'OPEN' && (
             <div className={cx('bet')}>
               <div className={cx('input-amount')}>
@@ -115,29 +98,6 @@ export default class Market extends React.Component {
               <div className={cx('market-resolved')}>Winning Outcome: {market.winningOutcome}</div>
             </div>
           )}
-          {/* <div
-            className={cx('body')}
-            style={{ display: 'flex', justifyContent: 'space-between' }}
-          >
-            <span>{marketStatus}</span>
-            <span>{resolutionDate}</span>
-            <span>{tradingVolume} xP+</span>
-          </div> */}
-        
-
-        {/* <div className={cx('market-nav')}>
-          <Button variant="outlined" size="small" className={cx('nav-button', 'pull-left')} onClick={onDetail}>
-            <ArrowLeft />
-            Market History
-          </Button>
-          {!market.closed && !market.resolved && (
-            <Button variant="contained" size="small" className={cx('nav-button', 'pull-right', 'bet-button')} onClick={onBet}>
-              Bet
-              <ArrowRight />
-            </Button>
-          )}
-        </div> */}
-        
       </div>
     );
   }

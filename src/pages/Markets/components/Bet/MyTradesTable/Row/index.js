@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames/bind';
 import Decimal from 'decimal.js';
-import style from '../index.scss';
+import style from '../index.module.css';
 
 const cx = cn.bind(style);
 

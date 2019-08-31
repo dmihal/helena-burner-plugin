@@ -12,8 +12,7 @@ import cn from 'classnames/bind';
 import BuyTokens from './BuyTokens';
 import MyShares from './MyShares';
 import MyTrades from './MyTrades';
-import { parseTokenValue } from '../../../../utils/token'
-import style from './index.scss';
+import style from './index.module.css';
 
 const cx = cn.bind(style);
 
@@ -29,7 +28,6 @@ export default class Bet extends React.Component {
   render() {
     const {
       onOverview,
-      balance,
       amount,
       onChangeAmount,
       errorAmount,
@@ -44,7 +42,6 @@ export default class Bet extends React.Component {
 
     const { value } = this.state;
 
-    const formattedBalance = parseTokenValue(balance);
     return (
       <div>
         <div style={{ width: '100%' }}>
