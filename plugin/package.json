@@ -1,6 +1,7 @@
 {
   "name": "helena-plugin",
   "version": "0.1.0",
+  "main": "src/HelenaPlugin.js",
   "dependencies": {
     "@frontier-token-research/pm-contracts": "^1.2.2",
     "@frontier-token-research/pm-js": "^2.2.12",

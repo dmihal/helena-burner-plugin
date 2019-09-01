@@ -51,7 +51,7 @@ export default class Market extends React.Component {
   };
 
   refreshMarket = async () => {
-    const market = pmService.getMarket(this.props.marketId);
+    const market = await pmService.getMarket(this.props.marketId);
     this.setState({ market });
   };
 
@@ -61,6 +61,8 @@ export default class Market extends React.Component {
     if (!market.title) {
       return 'Loading';
     }
+
+    const { AccountBalance } = this.props.burnerComponents;
 
     return (
       <AccountBalance

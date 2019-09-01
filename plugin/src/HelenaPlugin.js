@@ -38,6 +38,14 @@ export default class HelenaPlugin {
     this.updateMarkets();
   }
 
+  getToken() {
+    const [token] = this._pluginContext.getAssets().filter(asset => asset.id === this.token);
+    if (!token) {
+      throw new Error(`Can't find token ${this.token}`);
+    }
+    return token;
+  }
+
   getMarkets() {
     return this.markets;
   }
@@ -51,7 +59,7 @@ export default class HelenaPlugin {
   }
 
   async updateMarkets() {
-    this.markets = pmService.getMarkets();
+    this.markets = await pmService.getMarkets(this.getToken().address);
     this.marketListeners.forEach(listener => listener(this.markets));
   }
 }

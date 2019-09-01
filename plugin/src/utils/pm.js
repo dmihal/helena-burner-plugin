@@ -13,6 +13,22 @@ export const {
 let helenaInstance;
 let helenaROInstance;
 
+class ProviderAdapter {
+  constructor(provider) {
+    this.provider = provider;
+  }
+
+  send({ id, method, arguments: args, jsonrpc }, callback) {
+    this.provider.send(method, args)
+      .then(result => callback(null, { result, id, jsonrpc }))
+      .catch(err => callback(err));
+  }
+
+  sendAsync(payload, callback) {
+    this.send(payload, callback);
+  }
+}
+
 const addOlympiaContracts = async (helenaJsInstance) => {
   await helenaJsInstance.importContracts(olympiaArtifacts, {
     OlympiaToken: 'olympiaToken',
@@ -43,7 +59,7 @@ const waitForHelenaConnection = (instance) =>
 export const initHelenaConnection = async (web3) => {
   try {
     const opts = {
-      ethereum: web3.currentProvider,
+      ethereum: new ProviderAdapter(web3.currentProvider),
     };
     const helena = await Helena.create(opts);
 
@@ -65,7 +81,7 @@ export const initHelenaConnection = async (web3) => {
 export const initReadOnlyHelenaConnection = async (web3) => {
   try {
     const opts = {
-      ethereum: web3.currentProvider,
+      ethereum: new ProviderAdapter(web3.currentProvider),
     };
     const helena = await Helena.create(opts);
 

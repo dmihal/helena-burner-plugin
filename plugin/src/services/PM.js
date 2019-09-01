@@ -15,18 +15,17 @@ class PMService {
       : new ScalarMarket(market);
   }
 
-  getMarkets() {
-    return this.httpService.get('/markets').then((response) => {
-      if (!response.results) {
-        return [];
-      }
+  async getMarkets(tokenAddress) {
+    const response = await this.httpService.get('/markets');
+    if (!response.results) {
+      return [];
+    }
 
-      const records = response.results.map(this.newMarket);
-      const filteredRecords = records.filter(
-        (market) => this.token.toLowerCase() === collateralToken.toLowerCase()
-      );
-      return filteredRecords;
-    });
+    const records = response.results.map(this.newMarket);
+    const filteredRecords = records.filter(
+      (market) => tokenAddress.substr(2).toLowerCase() === market.collateralToken.toLowerCase()
+    );
+    return filteredRecords;
   }
 
   getMarket(marketId) {
