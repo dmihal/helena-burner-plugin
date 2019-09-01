@@ -40,6 +40,7 @@ const helena = new HelenaPlugin({
 
 const BurnerWallet = () =>
   <BurnerUI
+    title="Helena Markets"
     core={core}
     plugins={[exchange, helena]}
   />
